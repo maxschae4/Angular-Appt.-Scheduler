@@ -1,0 +1,23 @@
+<h1>Doctor's Appointments Partial</h1>
+<label>Search: <input ng-model = 'searchtext'></label>
+<table>
+	<thead>
+	<tr>
+		<th>Date</th>
+		<th>Time</th>
+		<th>Patient Name</th>
+		<th>Complaint</th>
+		<th>Actions</th>
+	</tr>
+</thead>
+<tbody>
+	<tr ng-repeat="appointment in ac.appts | orderBy: 'date' | filter: searchtext ">
+		<td ng-bind="appointment.date"></td>
+		<td ng-bind="appointment.time+':00'"></td>
+		<td ng-bind="appointment.name"></td>
+		<td ng-bind="appointment.complaint"></td>
+		<td><button ng-if="appointment.name == ac.user" ng-click="ac.deleteAppt(appointment)">Delete</button></td>
+	</tr>
+</tbody>
+</table>
+<a href="#/new_appointment">Add Appointment</a>
